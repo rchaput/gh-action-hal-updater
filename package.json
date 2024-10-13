@@ -3,6 +3,7 @@
   "description": "GitHub Action to pull publications from HAL and update them in a Hugo website",
   "version": "0.0.0",
   "author": "Remy Chaput",
+  "type": "module",
   "private": true,
   "homepage": "https://github.com/rchaput/gh-action-hal-updater",
   "repository": {
