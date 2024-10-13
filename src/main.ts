@@ -2,6 +2,7 @@ import * as core from '@actions/core'
 import { getPublicationsFromAuthorId } from './hal_api.js'
 import { getLocalPublications } from './local_publications.js'
 import { findCorrespondingPublication } from './compare_publications.js'
+import { createPullRequests } from './create_pr.js'
 
 /**
  * The main function for the action.
@@ -39,6 +40,16 @@ export async function run() {
 
     // Log results to the GitHub Step Summary file
     await logToSummary(results)
+
+    // Create Pull Requests for each missing publication
+    const missingPublications = results
+      .filter(result => !result.accepted)
+      .map(result => result.target)
+    const { allCreatedFiles, body } = createPullRequests(missingPublications)
+
+    core.setOutput('created-files', allCreatedFiles)
+    core.setOutput('body', body)
+
   } catch (error) {
     // Fail the workflow run if an error occurs
     if (error instanceof Error) core.setFailed(error.message)
