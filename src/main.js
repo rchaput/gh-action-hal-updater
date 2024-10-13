@@ -99,7 +99,7 @@ async function logToSummary(results) {
  * @param accepted Whether the candidate is a suitable match (based on the
  *   confidence and a threshold).
  */
-function logSinglePublicationToSummary(halPublication, bestPublication, confidence: Number, accepted: boolean) {
+function logSinglePublicationToSummary(halPublication, bestPublication, confidence, accepted) {
   // Print header
   if (accepted) {
     core.summary.addHeading(`:white_check_mark: ${halPublication['docid']}`, 2).addEOL()
