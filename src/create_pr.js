@@ -11,7 +11,7 @@ The following HAL publications were considered missing and are added in this PR:
 `
   for (const publication of publications) {
     allCreatedFiles.push(...createFiles(publication))
-    body = body + `- [${publication['halId_s']}](${publication['uri_s']})`
+    body = body + `- [${publication['halId_s']}](${publication['uri_s']})\n\n`
   }
 
   // TODO: for now, it seems complicated to create the PR ourselves, even

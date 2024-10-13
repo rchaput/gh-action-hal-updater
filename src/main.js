@@ -47,7 +47,7 @@ export async function run() {
       .map(result => result.target)
     const { allCreatedFiles, body } = createPullRequests(missingPublications)
 
-    core.setOutput('created-files', allCreatedFiles)
+    core.setOutput('created-files', allCreatedFiles.join(','))
     core.setOutput('body', body)
 
   } catch (error) {
