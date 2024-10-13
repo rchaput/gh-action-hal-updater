@@ -31,6 +31,11 @@ export function findCorrespondingPublication(targetHalPublication, existingPubli
     const authorsSimilarity = computeAuthorsSimilarity(targetHalPublication, candidate)
     const dateSimilarity = computeDateSimilarity(targetHalPublication, candidate)
     // TODO: add more measures of similarities: based on keywords, authors, abstract, ...
+    // // - Publication location (conference, journal, ...)
+    //
+    // // - Tags / keywords
+    // const halKeywords = targetHalPublication['keyword_t']
+    // const candidateKeywords = candidate['tags']
 
     const validMeasures = [titleSimilarity, authorsSimilarity, dateSimilarity, authorsSimilarity].filter(
       measure => measure != null && !isNaN(measure)
