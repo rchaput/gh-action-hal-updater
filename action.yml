@@ -1,23 +1,22 @@
-name: 'The name of your action here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'gh-action-hal-updater'
+description: 'GitHub Action to pull publications from HAL and update them in a Hugo website'
+author: 'Remy Chaput'
 
-# Add your action's branding here. This will appear on the GitHub Marketplace.
 branding:
   icon: 'heart'
   color: 'red'
 
-# Define your inputs here.
 inputs:
-  milliseconds:
-    description: 'Your input description here'
+  author-id:
+    description: 'The HAL AuthorID you want to get publications from.'
     required: true
-    default: '1000'
-
-# Define your outputs here.
-outputs:
-  time:
-    description: 'Your output description here'
+  local-path:
+    description: 'The path to the local folder containing publications.'
+    required: true
+  confidence-threshold:
+    description: 'The minimum confidence to consider a candidate as a suitable match.'
+    required: false
+    default: "0.75"
 
 runs:
   using: node20
